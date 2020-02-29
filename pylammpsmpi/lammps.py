@@ -67,8 +67,9 @@ class LammpsLibrary(object):
         self._send(command="commands_string", data=list(args))
 
     def extract_setting(self, *args):
-        self._send(command="extract_setting", data=list(args))
-        return self._receive()
+        raise NotImplementedError()
+        # self._send(command="extract_setting", data=list(args))
+        # return self._receive()
 
     def extract_global(self, *args):
         self._send(command="extract_global", data=list(args))
