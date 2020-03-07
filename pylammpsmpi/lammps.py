@@ -23,11 +23,14 @@ __date__ = "Feb 28, 2020"
 
 class LammpsLibrary(object):
     def __init__(self, cores=1, working_directory="."):
-        executable = os.path.join(
+        self.executable = os.path.join(
             os.path.dirname(os.path.abspath(__file__)), "mpi", "lmpmpi.py"
         )
+        self.cores = cores
+
+    def start_mpi(self):
         self._process = subprocess.Popen(
-            ["mpiexec", "-n", str(cores), "python", executable],
+            ["mpiexec", "-n", str(self.cores), "python", self.executable],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             stdin=subprocess.PIPE,
